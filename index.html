@@ -16,7 +16,14 @@
 			this.x = x
 			this.y = y
 			this.radius = radius
-			ctx.arc(x, y, radius, 0, Math.PI*2, false);
+			ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+		}
+		draw {
+			ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+		}
+		move(x, y) {
+			this.x += x
+			this.y += y
 		}
 	}
 	var canvas = document.getElementById("myCanvas");
