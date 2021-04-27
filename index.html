@@ -11,11 +11,19 @@
 <canvas id="myCanvas" width="480" height="320"></canvas>
 
 <script>
+	class Ball {
+		constructor(x, y, radius){
+			this.x = x
+			this.y = y
+			this.radius = radius
+			ctx.arc(x, y, radius, 0, Math.PI*2, false);
+		}
+	}
 	var canvas = document.getElementById("myCanvas");
   	var ctx = canvas.getContext("2d");
 	ctx.beginPath();
-	ctx.arc(240, 160, 20, 0, Math.PI*2, false);
 	ctx.fillStyle = "green";
+	var ball = Ball(240, 160, 20)
 	ctx.fill();
 	ctx.closePath();
 </script>
