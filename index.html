@@ -27,19 +27,37 @@
 			this.x += this.dx
 			this.y += this.dy
 		}
-		collision(x1, y1, x2, y2) {
+		brick_collision(x1, y1, x2, y2, br) {
 			if (this.x + this.dx >= x1 && this.x + this.dx <= x2){
-				if (this.y + this.dy <= y1 && this.y + dy >= y2){
-					this.dx = -1 * this.dx
-					this.dy = -1 * this.dy
+				if (this.y + this.dy <= y1 && this.y + this.dy >= y2){
+					
 				}
 			}
 		}
-	}
+	 }
+	class Brick {
+		constructor(x, y, width, height)
+		{
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			ctx.rect(this.x, this.y, this.width, this.height);
+		} draw() {
+			ctx.rect(this.x, this.y, this.width, this.height);
+		}		
+	}	
 	
 	var canvas = document.getElementById("myCanvas");
 	var ball = Ball(240, 160, 20);
   	var ctx = canvas.getContext("2d");
+	const BRICKAMOUNT = 10;
+	
+	var bricklist = [];
+	for(i = 0; i < BRICKAMOUNT; i++){
+		var brick = Brick((window.length/BRICKAMOUNT) * i, 50, (window.length/BRICKAMOUNT)/2, (window.height/BRICKAMOUNT)/10);
+		bricklist.append(brick);
+	}
 	
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.beginPath();
