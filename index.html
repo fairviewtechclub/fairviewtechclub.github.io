@@ -15,22 +15,24 @@
 		constructor(x, y, radius){
 			this.x = x
 			this.y = y
+			this.dx = 0
+			this.dy = 0
 			this.radius = radius
 			ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
 		}
 		draw() {
 			ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
 		}
-		move(x, y) {
-			this.x += x
-			this.y += y
+		move() {
+			this.x += this.dx
+			this.y += this.dy
 		}
 		collision(x1, y1, x2, y2) {
-			if(x1 + this.x > canvas.width-ballRadius || x + dx < ballRadius) {
-    				dx = -dx;
-			}
-			if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
-    				dy = -dy;
+			if (this.x + this.dx >= x1 && this.x + this.dx <= x2){
+				if (this.y + this.dy <= y1 && this.y + dy >= y2){
+					this.dx = -1 * this.dx
+					this.dy = -1 * this.dy
+				}
 			}
 		}
 	}
